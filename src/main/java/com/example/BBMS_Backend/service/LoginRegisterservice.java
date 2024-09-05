@@ -7,11 +7,7 @@ import com.example.BBMS_Backend.Response.LoginResponse;
 
 
 public interface LoginRegisterservice {
-
-
-
      LoginRegisterDTO registeremployee(LoginRegisterDTO loginRegisterDTO);
-
      LoginResponse login(LoginDTO loginDTO);
 
      ;
