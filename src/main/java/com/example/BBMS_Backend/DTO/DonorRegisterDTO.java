@@ -10,12 +10,15 @@ import java.time.LocalDateTime;
 @Setter
 @Data
 public class DonorRegisterDTO {
-    private String DonorF_name;
-    private String DonorP_name;
-    private String Donor_NIC;
-    private String Donor_Age;
-    private int Previous_transfusion_time;
-    private String Address;
-    private String Telephone;
-    private LocalDateTime Date;
+    private int donorid;
+    private String bloodpackertnumber;
+    private String donorfname;
+    private String donorpname;
+    private String donornic;
+    private String donorage;
+    private int previoustransfusiontime;
+    private int donorweight;
+    private String address;
+    private String telephone;
+    private LocalDateTime date;
 }

@@ -32,7 +32,6 @@ public class LoginRegisterImpl implements LoginRegisterservice {
 
     @Override
     public LoginRegisterDTO registeremployee(LoginRegisterDTO registerDTO) {
-
         registerDTO.setPassword(passwordEncoder.encode(registerDTO.getPassword()));
         loginRegisterRepo.save(modelMaper.map(registerDTO, LoginRegisterEntity.class));
         return registerDTO;
