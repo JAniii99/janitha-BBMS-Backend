@@ -18,6 +18,7 @@ public class DonorRegisterDTO {
     private String donorage;
     private int previoustransfusiontime;
     private int donorweight;
+    private String donorbloodgroup;
     private String address;
     private String telephone;
     private LocalDateTime date;
