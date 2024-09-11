@@ -11,7 +11,7 @@ import lombok.*;
 @Data
 @Table(name = "Registeremployee")
 
-public class LoginRegisterEntity {
+public class User {
     @Id
     private  int eid;
     private String fname;

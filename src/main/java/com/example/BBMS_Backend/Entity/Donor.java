@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @Getter
 @Data
 @Table(name = "DonorDetails")
-public class DonorRegisterEntity {
+public class Donor {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "donor_seq")
     @SequenceGenerator(name = "donor_seq", sequenceName = "donor_sequence", allocationSize = 1)

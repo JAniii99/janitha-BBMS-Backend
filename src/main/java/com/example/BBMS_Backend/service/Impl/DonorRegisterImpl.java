@@ -1,7 +1,7 @@
 package com.example.BBMS_Backend.service.Impl;
 
 import com.example.BBMS_Backend.DTO.DonorRegisterDTO;
-import com.example.BBMS_Backend.Entity.DonorRegisterEntity;
+import com.example.BBMS_Backend.Entity.Donor;
 import com.example.BBMS_Backend.Repo.DonorRegisterRepo;
 import com.example.BBMS_Backend.service.DonorRegisterservice;
 import jakarta.transaction.Transactional;
@@ -21,7 +21,7 @@ public class DonorRegisterImpl implements DonorRegisterservice {
 
     @Override
     public DonorRegisterDTO registerdonor(DonorRegisterDTO donorRegisterDTO) {
-        donorRegisterRepo.save(modelMapper.map(donorRegisterDTO, DonorRegisterEntity.class));
+        donorRegisterRepo.save(modelMapper.map(donorRegisterDTO, Donor.class));
         return donorRegisterDTO;
     }
 }
