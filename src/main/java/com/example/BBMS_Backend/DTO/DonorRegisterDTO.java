@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Data
+
 public class DonorRegisterDTO {
     private int donorid;
     private String bloodpackertnumber;
