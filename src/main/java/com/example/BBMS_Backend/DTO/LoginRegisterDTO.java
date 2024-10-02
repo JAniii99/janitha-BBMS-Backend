@@ -13,6 +13,7 @@ public class LoginRegisterDTO {
     private String fname;
     private  String uname;
     private  String  password;
+    private String role;
 
 
 }

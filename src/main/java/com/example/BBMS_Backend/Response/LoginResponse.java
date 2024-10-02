@@ -12,4 +12,6 @@ public class LoginResponse {
 
      String message;
      Boolean status;
+     String token;
+     String role;
 }
