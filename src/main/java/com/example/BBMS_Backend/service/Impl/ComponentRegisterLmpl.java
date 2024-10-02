@@ -50,19 +50,19 @@ public class ComponentRegisterLmpl implements ComponentRegisterservice {
     }
 
 
-@Override
+    @Override
     public FfpComponenrRegisterDTO ffpregister(FfpComponenrRegisterDTO ffpComponenrRegisterDTO) {
-    BloodComponent existingComponent = componentRegisterRepo.findByBloodpackertnumber(ffpComponenrRegisterDTO.getBloodpackertnumber());
+        BloodComponent existingComponent = componentRegisterRepo.findByBloodpackertnumber(ffpComponenrRegisterDTO.getBloodpackertnumber());
 
-    if (existingComponent != null) {
-        existingComponent.setFfpdateofmanufacture(ffpComponenrRegisterDTO.getFfpdateofmanufacture());
-        existingComponent.setFfpdateofexpire(ffpComponenrRegisterDTO.getFfpdateofexpire());
-        existingComponent.setFfpvolume(ffpComponenrRegisterDTO.getFfpvolume());
+        if (existingComponent != null) {
+            existingComponent.setFfpdateofmanufacture(ffpComponenrRegisterDTO.getFfpdateofmanufacture());
+            existingComponent.setFfpdateofexpire(ffpComponenrRegisterDTO.getFfpdateofexpire());
+            existingComponent.setFfpvolume(ffpComponenrRegisterDTO.getFfpvolume());
 
-        componentRegisterRepo.save(existingComponent);
-    }
+            componentRegisterRepo.save(existingComponent);
+        }
 
-    return ffpComponenrRegisterDTO;
+        return ffpComponenrRegisterDTO;
     }
 
     @Override
