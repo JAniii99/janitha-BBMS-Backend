@@ -1,6 +1,7 @@
 package com.example.BBMS_Backend.controller;
 import com.example.BBMS_Backend.DTO.ChangePasswordDTO;
 import com.example.BBMS_Backend.DTO.LoginDTO;
+import com.example.BBMS_Backend.Response.ChangepasswordResponse;
 import com.example.BBMS_Backend.Response.LoginResponse;
 import com.example.BBMS_Backend.config.Securityconfig;
 import com.example.BBMS_Backend.service.LoginRegisterservice;
@@ -21,6 +22,8 @@ public class LoginRegistercontroller {
     @Autowired
     private Securityconfig securityconfig;
 
+
+
     @PostMapping("/save")
     public LoginRegisterDTO saveregister(@RequestBody LoginRegisterDTO loginRegisterDTO){
         return loginRegisterservice.registeremployee(loginRegisterDTO);
@@ -29,13 +32,15 @@ public class LoginRegistercontroller {
 
     @PostMapping("/login")
     public ResponseEntity<?> loginemployee(@RequestBody LoginDTO loginDTO){
+        System.out.println(loginDTO);
         LoginResponse loginResponse = loginRegisterservice.login(loginDTO);
         return ResponseEntity.ok(loginResponse);
     }
-    @PostMapping("/change-password")
+    @PostMapping("/changepassword")
     @PreAuthorize("isAuthenticated()")
     public ResponseEntity<?> changePassword(@RequestBody ChangePasswordDTO request) {
-        loginRegisterservice.changePassword(request.getUsername(), request.getOldPassword(), request.getNewPassword());
-        return ResponseEntity.ok("Password changed successfully");
+//        System.out.println(request);
+        ChangepasswordResponse changepasswordResponse = loginRegisterservice.changePassword(request.getUsername(), request.getOldPassword(), request.getNewPassword());
+        return ResponseEntity.ok(changepasswordResponse);
     }
 }

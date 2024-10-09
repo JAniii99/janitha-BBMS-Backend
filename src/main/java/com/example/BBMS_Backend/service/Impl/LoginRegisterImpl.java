@@ -1,6 +1,7 @@
 package com.example.BBMS_Backend.service.Impl;
 import com.example.BBMS_Backend.DTO.LoginDTO;
 import com.example.BBMS_Backend.Entity.User;
+import com.example.BBMS_Backend.Response.ChangepasswordResponse;
 import com.example.BBMS_Backend.Response.LoginResponse;
 import com.example.BBMS_Backend.config.JwtUtil;
 import com.example.BBMS_Backend.service.LoginRegisterservice;
@@ -39,7 +40,6 @@ public class LoginRegisterImpl implements LoginRegisterservice {
 //
 //            throw new AccessDeniedException("Only admin users can register new employees");
 //        }
-        registerDTO.setPassword(passwordEncoder.encode(registerDTO.getPassword()));
         registerDTO.setRole("ROLE_EMPLOYEE");
         registerDTO.setPassword(passwordEncoder.encode(registerDTO.getPassword()));
         loginRegisterRepo.save(modelMaper.map(registerDTO, User.class));
@@ -53,6 +53,7 @@ public class LoginRegisterImpl implements LoginRegisterservice {
             String password = loginDTO.getPassword();
             String encodedPassword = employee1.getPassword();
             Boolean isPwdRight = passwordEncoder.matches(password, encodedPassword);
+            System.out.println(isPwdRight);
             if (isPwdRight) {
                 String token = jwtUtil.generateToken(employee1);
                 return new LoginResponse("Login Success", true , token , employee1.getRole());
@@ -65,13 +66,14 @@ public class LoginRegisterImpl implements LoginRegisterservice {
     }
 
     @Override
-    public void changePassword(String username, String oldPassword, String newPassword) {
+    public ChangepasswordResponse changePassword(String username, String oldPassword, String newPassword) {
         User user = loginRegisterRepo.findByUname(username);
         if (user == null || !passwordEncoder.matches(oldPassword, user.getPassword())) {
-            throw new BadCredentialsException("Invalid username or Password");
+            return new ChangepasswordResponse("Username OR Password not exist" ,false);
         }
         user.setPassword(passwordEncoder.encode(newPassword));
         loginRegisterRepo.save(user);
+        return new ChangepasswordResponse("Change Password Success",true);
     }
 
 

@@ -22,7 +22,7 @@ public class JwtUtil {
     private long jwtExpirationInMs;
 
     @Value("${jwt.clockSkew}")
-    private long clockSkewInMs; // Allowable clock skew in milliseconds
+    private long clockSkewInMs;
 
 
     public JwtUtil(@Value("${jwt.secret}") String secret) {
