@@ -17,7 +17,7 @@ public class BloodStockController {
     private BloodStockService bloodStockService;
     @PostMapping("/bloodstock")
     public ResponseEntity<?> getAvailableBloodStocks2(@RequestBody BloodstockDTO bloodstockDTO) {
-        System.out.println(bloodstockDTO);
+
         Bloodstockresponse bloodstockresponse =bloodStockService.getAllBloodStocks(bloodstockDTO.getBloodGroup() ,bloodstockDTO.getBloodResus());
         return ResponseEntity.ok(bloodstockresponse);
     }

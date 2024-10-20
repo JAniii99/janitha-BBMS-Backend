@@ -17,10 +17,7 @@ public class BloodStockImpl implements BloodStockService {
 
     @Override
     public Bloodstockresponse getAllBloodStocks(String bloodgroup, String resus) {
-        System.out.println(bloodgroup);
-        System.out.println(resus);
         int quntity =bloodStockRepository.findBloodStock(bloodgroup,resus);
-        System.out.println(quntity);
         return new Bloodstockresponse(bloodgroup,resus,quntity);
     }
 }
