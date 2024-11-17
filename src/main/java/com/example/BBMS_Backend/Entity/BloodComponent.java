@@ -1,13 +1,11 @@
 package com.example.BBMS_Backend.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.SecondaryTable;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jdk.jfr.Enabled;
 import lombok.*;
 
 import java.util.Date;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,28 +17,40 @@ import java.util.Date;
 public class BloodComponent {
     @Id
     private String bloodpackertnumber;
+
     private String bloodGroup;
     private String bloodResus;
-    private String donorpname;
+    private String donorpname; // Related to Donor's name
     private String packertserialnumber;
     private String packerttype;
-    private int eid;
+    private Integer eid;
     private String fname;
+
+    @ManyToOne // Many BloodComponents can be managed by one Employee (User)
+    @JoinColumn(name = "eid", referencedColumnName = "eid", insertable = false, updatable = false , nullable = false)
+    private User employee;
+
+    @OneToOne // One Donor provides one BloodComponent (assuming one-to-one mapping)
+    @JoinColumn(name = "bloodpackertnumber", referencedColumnName = "bloodpackertnumber", insertable = false, updatable = false)
+    private Donor donor;
+
+
+
 
     private Date rccdateofmanufacture;
     private Date rccdateofexpire;
-    private int rccvolume;
+
+    private Integer rccvolume;
 
     private Date plateletdateofmanufacture;
     private Date plateletdateofexpire;
-    private int plateletvolume;
+    private Integer plateletvolume;
 
     private Date ffpdateofmanufacture;
     private Date ffpdateofexpire;
-    private int ffpvolume;
+    private Integer ffpvolume;
 
     private Date buffycoatdateofmanufacture;
     private Date buffycoatdateofexpire;
-    private int buffycoatvolume;
-
+    private Integer buffycoatvolume;
 }
