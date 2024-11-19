@@ -1,5 +1,6 @@
 package com.example.BBMS_Backend.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jdk.jfr.Enabled;
 import lombok.*;
@@ -14,6 +15,7 @@ import java.util.List;
 @Entity
 @Data
 @Table(name = "Bloodcomponentdetails2")
+@ToString(exclude = {"donor","employee"})
 public class BloodComponent {
     @Id
     private String bloodpackertnumber;
@@ -26,8 +28,9 @@ public class BloodComponent {
     private Integer eid;
     private String fname;
 
-    @ManyToOne // Many BloodComponents can be managed by one Employee (User)
+    @ManyToOne (fetch = FetchType.LAZY)// Many BloodComponents can be managed by one Employee (User)
     @JoinColumn(name = "eid", referencedColumnName = "eid", insertable = false, updatable = false , nullable = false)
+    @JsonIgnore
     private User employee;
 
     @OneToOne // One Donor provides one BloodComponent (assuming one-to-one mapping)

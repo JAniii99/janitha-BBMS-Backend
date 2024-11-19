@@ -10,6 +10,7 @@ import java.util.Date;
 @Getter
 @Setter
 @Data
+@ToString
 public class RccComponentupdateDTO {
 
     @Id

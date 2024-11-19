@@ -5,10 +5,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface CheckdonorRepo extends JpaRepository<Donor, String> {
     // Method to find donor by blood pack number
-    @Query(value = "SELECT * FROM donor_details WHERE bloodpackertnumber=?1 ", nativeQuery = true)
+    @Query(value = "SELECT * FROM donor_details WHERE bloodpackertnumber = ?1", nativeQuery = true)
    // @Query(value = "SELECT bloodpackertnumber,donorpname FROM donor_details WHERE bloodpackertnumber=?1 ", nativeQuery = true)
-    Donor findByBloodpackertnumber(String bloodpackertnumber);
+    Optional<Donor> findByBloodpackertnumber(String bloodpackertnumber);
 }

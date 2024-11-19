@@ -22,6 +22,7 @@ public class Componentupdateregister {
 
     @PutMapping("/rccupd")
     public RccComponentupdateDTO Rccupdate(@RequestBody RccComponentupdateDTO rccComponentupdateDTO){
+        System.out.println(rccComponentupdateDTO);
         return componentupdateservice.rccupdate(rccComponentupdateDTO);
     }
 

@@ -26,8 +26,9 @@ public class ComponentupdateImpl implements Componentupdateservice {
 
     @Override
     public RccComponentupdateDTO rccupdate(RccComponentupdateDTO rccComponentupdateDTO) {
-        BloodComponent existingComponent = componentupdateRepo.findByBloodpackertnumber(rccComponentupdateDTO.getBloodpackertnumber());
-
+        System.out.println(rccComponentupdateDTO);
+        BloodComponent existingComponent = componentupdateRepo.findByBloodpacknumber(rccComponentupdateDTO.getBloodpackertnumber());
+        System.out.println(existingComponent);
         System.out.println(existingComponent);
         if (existingComponent != null) {
             existingComponent.setRccdateofmanufacture(rccComponentupdateDTO.getRccdateofmanufacture());
@@ -44,7 +45,7 @@ public class ComponentupdateImpl implements Componentupdateservice {
 
     @Override
     public PlateletComponentupdateDTO playeletupdate(PlateletComponentupdateDTO plateletComponentupdateDTO) {
-        BloodComponent existingComponent = componentupdateRepo.findByBloodpackertnumber(plateletComponentupdateDTO.getBloodpackertnumber());
+        BloodComponent existingComponent = componentupdateRepo.findByBloodpacknumber(plateletComponentupdateDTO.getBloodpackertnumber());
 
         if (existingComponent != null) {
             existingComponent.setPlateletdateofmanufacture(plateletComponentupdateDTO.getPlateletdateofmanufacture());
@@ -61,7 +62,7 @@ public class ComponentupdateImpl implements Componentupdateservice {
 
     @Override
     public FfpComponenrupdateDTO ffpupdate(FfpComponenrupdateDTO ffpComponenrupdateDTO) {
-        BloodComponent existingComponent = componentupdateRepo.findByBloodpackertnumber(ffpComponenrupdateDTO.getBloodpackertnumber());
+        BloodComponent existingComponent = componentupdateRepo.findByBloodpacknumber(ffpComponenrupdateDTO.getBloodpackertnumber());
 
         if (existingComponent != null) {
             existingComponent.setFfpdateofmanufacture(ffpComponenrupdateDTO.getFfpdateofmanufacture());
@@ -77,7 +78,7 @@ public class ComponentupdateImpl implements Componentupdateservice {
 
     @Override
     public BuffycoatupdateDTO buffycoatupdate(BuffycoatupdateDTO buffycoatupdateDTO) {
-        BloodComponent existingComponent = componentupdateRepo.findByBloodpackertnumber(buffycoatupdateDTO.getBloodpackertnumber());
+        BloodComponent existingComponent = componentupdateRepo.findByBloodpacknumber(buffycoatupdateDTO.getBloodpackertnumber());
 
         if (existingComponent != null) {
             existingComponent.setBuffycoatdateofmanufacture(buffycoatupdateDTO.getBuffycoatdateofmanufacture());

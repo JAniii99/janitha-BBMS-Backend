@@ -18,7 +18,9 @@ public class CheckdonorImpl implements Checkdonorservice {
     public CheckdonorresponseDTO check(CheckdonorDTO checkdonorDTO) {
         // Fetch donor by blood pack number
         System.out.println(checkdonorDTO);
-        Donor donor = checkdonorRepo.findByBloodpackertnumber(checkdonorDTO.getBloodpackertnumber());
+        Donor donor = checkdonorRepo.findByBloodpackertnumber(checkdonorDTO.getBloodpackertnumber())
+                .orElseThrow(() -> new RuntimeException("Donor not found for blood pack number: " + checkdonorDTO.getBloodpackertnumber()));
+
         System.out.println(donor);
         if (donor == null) {
             // Handle case when donor is not found
